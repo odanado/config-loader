@@ -2,21 +2,16 @@ import { EnvPlugin, DefinePlugin } from "@/plugins/index"
 
 export type Plugin = EnvPlugin | DefinePlugin
 
-// いい感じの名前にする
-export type Config<T> = {
+export type MapPlugin<T> = {
   [P in keyof T]: Plugin
 }
 
-type Config2 = {
-  [P in string]: Plugin
-}
-
 export class ConfigLoader<T> {
-  async load(config: Config2): Promise<T> {
+  async load(mapPlugin: MapPlugin<T>): Promise<T> {
     const result: any = {}
-    const keys = Object.keys(config)
+    const keys = Object.keys(mapPlugin)
     await Promise.all(keys.map(async key => {
-      const plugin = config[key]
+      const plugin = mapPlugin[key as keyof T] // XXX
       await plugin.load()
       const value = plugin.getValue()
       if (value === undefined) {

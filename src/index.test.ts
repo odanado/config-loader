@@ -1,4 +1,4 @@
-import { ConfigLoader, Config } from "@/index"
+import { ConfigLoader, MapPlugin } from "@/index"
 import { DefinePlugin, EnvPlugin } from "@/plugins/index"
 
 interface ConfigScheme {
@@ -7,7 +7,7 @@ interface ConfigScheme {
   RDB_PASSWORD: string
 }
 
-const config: Config<ConfigScheme> = {
+const mapPlugin: MapPlugin<ConfigScheme> = {
   RDB_DB_NAME: new DefinePlugin('test'),
   RDB_PASSWORD: new EnvPlugin('RDB_PASSWORD'),
   RDB_USER: new DefinePlugin('test_user'),
@@ -22,12 +22,12 @@ describe("ConfigLoader", () => {
   describe(".load", () => {
     it("should be throw error", async () => {
       delete process.env["RDB_PASSWORD"]
-      await expect(loader.load(config)).rejects.toThrow(/RDB_PASSWORD/)
+      await expect(loader.load(mapPlugin)).rejects.toThrow(/RDB_PASSWORD/)
     })
 
     it("should be success", async () => {
       process.env["RDB_PASSWORD"] = "pass"
-      await expect(loader.load(config)).resolves.toBeTruthy()
+      await expect(loader.load(mapPlugin)).resolves.toBeTruthy()
     })
   })
 })
