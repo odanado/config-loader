@@ -1,5 +1,5 @@
 import { ConfigLoader, MapPlugin } from "@/index"
-import { DefinePlugin, EnvPlugin } from "@/plugins/index"
+import { DefinePlugin, EnvPlugin } from "@/plugins"
 
 interface ConfigScheme {
   RDB_USER: string

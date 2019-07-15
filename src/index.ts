@@ -1,4 +1,4 @@
-import { EnvPlugin, DefinePlugin } from "@/plugins/index"
+import { EnvPlugin, DefinePlugin } from "@/plugins"
 
 export type Plugin = EnvPlugin | DefinePlugin
 
@@ -20,6 +20,6 @@ export class ConfigLoader<T> {
       result[key] = value
     }))
 
-    return result as T
+    return result as T // XXX
   }
 }
