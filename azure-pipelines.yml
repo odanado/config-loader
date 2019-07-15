@@ -18,9 +18,9 @@ steps:
   displayName: 'Install dependencies'
 
 - script: |
-    yarn run build
-  displayName: 'Build'
+    yarn run test:build
+  displayName: 'Run test for build'
 
 - script: |
-    yarn run test
-  displayName: 'Run test'
+    yarn run test:jest
+  displayName: 'Run unit test'

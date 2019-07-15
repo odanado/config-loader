@@ -12,7 +12,7 @@
     "typescript": "^3.5.3"
   },
   "scripts": {
-    "build": "tsc",
-    "test": "jest"
+    "test:build": "tsc --noEmit",
+    "test:jest": "jest"
   }
 }
