@@ -14,10 +14,13 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    yarn install
-    yarn run build
-  displayName: 'npm install and build'
+    yarn install --prod=false --frozen-lockfile
+  displayName: 'Install dependencies'
 
 - script: |
-    yarn run test
-  displayName: 'run test'
+    yarn run test:build
+  displayName: 'Run test for build'
+
+- script: |
+    yarn run test:jest
+  displayName: 'Run unit test'
