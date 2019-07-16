@@ -24,3 +24,7 @@ steps:
 - script: |
     yarn run test:jest
   displayName: 'Run unit test'
+
+- script: |
+    cat coverage/lcov.info | yarn coveralls
+  displayName: 'Report coverage'
