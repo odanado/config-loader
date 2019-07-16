@@ -3,7 +3,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/odanado/config-loader/badge.svg?branch=add-coveralls)](https://coveralls.io/github/odanado/config-loader?branch=add-coveralls)
 
 ## Installation
-WIP
+```bash
+$ yarn add @odanado/config-loader
+```
 
 ## Usage
 
@@ -18,8 +20,7 @@ export interface ConfigScheme {
 
 
 // config/development.ts
-import { MapPlugin } from "@/index"
-import { DefinePlugin } from "@/plugins"
+import { MapPlugin, DefinePlugin } from "@odanado/config-loader"
 import { ConfigScheme } from "./"
 
 const mapPlugin: MapPlugin<ConfigScheme> = {
@@ -30,9 +31,9 @@ const mapPlugin: MapPlugin<ConfigScheme> = {
 export default mapPlugin
 
 
+
 // config/production.ts
-import { MapPlugin } from "@/index"
-import { DefinePlugin, EnvPlugin } from "@/plugins"
+import { MapPlugin, DefinePlugin, EnvPlugin } from "@odanado/config-loader"
 import { ConfigScheme } from "./"
 
 const mapPlugin: MapPlugin<ConfigScheme> = {
@@ -47,15 +48,19 @@ export default mapPlugin
 ### In app.ts
 ```typescript
 import { ConfigLoader } from "@odanado/config-loader"
-import { ConfigScheme } from "./config/index"
-
-const configLoader = new ConfigLoader<ConfigScheme>('./config')
-
-// if NODE_ENV === 'development'
-await configLoader.load() // -> { RDB_USER: 'test', RDB_PASSWORD: 'password', RDB_USER: 'test_user' }
+import { ConfigScheme } from "./config"
 
 
-// if NODE_ENV === 'production' and RDB_PASSWORD === 'abcdef'
-await configLoader.load() // -> { RDB_USER: 'test', RDB_PASSWORD: 'abcdef', RDB_USER: 'test_user' }
+async function main() {
+  const path = `${process.cwd()}/config`
+  const configLoader = new ConfigLoader<ConfigScheme>(path)
+  // if NODE_ENV === 'development'
+  await configLoader.load() // -> { RDB_USER: 'test', RDB_PASSWORD: 'password', RDB_USER: 'test_user' }
+  
+  
+  // if NODE_ENV === 'production' and RDB_PASSWORD === 'abcdef'
+  await configLoader.load() // -> { RDB_USER: 'test', RDB_PASSWORD: 'abcdef', RDB_USER: 'test_user' }
+}
 
+main()
 ```
