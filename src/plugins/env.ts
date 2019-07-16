@@ -1,4 +1,4 @@
-import { PluginBase } from "@/plugin"
+import { PluginBase } from "../plugin"
 
 export class EnvPlugin extends PluginBase {
   private value?: string;

@@ -1,4 +1,4 @@
-import { PluginBase } from "@/plugin"
+import { PluginBase } from "../plugin"
 
 export class DefinePlugin extends PluginBase {
   constructor(public value: string) {

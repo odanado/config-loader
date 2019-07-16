@@ -1,6 +1,6 @@
 import { join } from "path"
 
-import { EnvPlugin, DefinePlugin } from "@/plugins"
+import { EnvPlugin, DefinePlugin } from "./plugins"
 
 export {
   EnvPlugin,
@@ -23,7 +23,7 @@ export class ConfigLoader<T> {
   }
 
   get mapPluginFile() {
-    return join(this.directory, `${this.env}.ts`)
+    return join(this.directory, `${this.env}`)
   }
 
   async load(): Promise<T> {

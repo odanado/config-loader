@@ -1,13 +1,11 @@
 {
   "name": "@odanado/config-loader",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "main": "dist/index.js",
-  "module": "lib/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "lib"
+    "dist"
   ],
   "dependencies": {},
   "devDependencies": {
@@ -19,9 +17,8 @@
     "typescript": "^3.5.3"
   },
   "scripts": {
-    "build": "yarn build:cjs && yarn build:esm",
+    "build": "yarn build:cjs",
     "build:cjs": "yarn tsc -p tsconfig.build.json",
-    "build:esm": "yarn tsc -p tsconfig.module.json",
     "test:build": "tsc --noEmit",
     "test:jest": "jest",
     "report:coverage": "cat coverage/lcov.info | yarn coveralls"
