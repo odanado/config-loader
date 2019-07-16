@@ -22,12 +22,12 @@ describe("ConfigLoader", (): void => {
   describe(".load", (): void => {
     it("should be throw error", async (): Promise<void> => {
       delete process.env["RDB_PASSWORD"];
-      await expect(loader._load(mapPlugin)).rejects.toThrow(/RDB_PASSWORD/);
+      await expect(loader["_load"](mapPlugin)).rejects.toThrow(/RDB_PASSWORD/);
     });
 
     it("should be success", async (): Promise<void> => {
       process.env["RDB_PASSWORD"] = "pass";
-      await expect(loader._load(mapPlugin)).resolves.toBeTruthy();
+      await expect(loader["_load"](mapPlugin)).resolves.toBeTruthy();
     });
   });
 });
