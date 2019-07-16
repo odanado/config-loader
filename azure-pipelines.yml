@@ -22,6 +22,10 @@ steps:
   displayName: 'Run test for build'
 
 - script: |
+    yarn run test:lint
+  displayName: 'Run eslint'
+
+- script: |
     yarn run test:jest
   displayName: 'Run unit test'
 
