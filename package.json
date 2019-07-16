@@ -1,6 +1,6 @@
 {
   "name": "@odanado/config-loader",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -28,7 +28,8 @@
     "test:build": "tsc --noEmit",
     "test:jest": "jest",
     "test:lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
-    "report:coverage": "cat coverage/lcov.info | yarn coveralls"
+    "report:coverage": "cat coverage/lcov.info | yarn coveralls",
+    "prepublishOnly": "yarn build"
   },
   "publishConfig": {
     "access": "public"
