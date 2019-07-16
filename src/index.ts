@@ -2,6 +2,11 @@ import { join } from "path"
 
 import { EnvPlugin, DefinePlugin } from "@/plugins"
 
+export {
+  EnvPlugin,
+  DefinePlugin
+}
+
 export type Plugin = EnvPlugin | DefinePlugin
 
 export type MapPlugin<T> = {

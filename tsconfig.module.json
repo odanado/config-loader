@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "module": "esnext",
+    "declaration": true,
+    "outDir": "lib"
+  },
+  "exclude": [
+    "node_modules",
+    "./src/**/*.test.ts",
+    "./fixtures/**/*.ts",
+    "./__tests__/**/*.ts"
+  ]
+}
