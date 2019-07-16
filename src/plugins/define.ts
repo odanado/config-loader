@@ -1,16 +1,18 @@
-import { PluginBase } from "../plugin"
+import { PluginBase } from "../plugin";
 
 export class DefinePlugin extends PluginBase {
-  constructor(public value: string) {
-    super()
+  private value: string;
+  public constructor(value: string) {
+    super();
+    this.value = value;
   }
-  load(): Promise<void> {
-    return new Promise<void>(resolve => resolve())
+  public load(): Promise<void> {
+    return new Promise<void>((resolve): void => resolve());
   }
-  getValue(): string {
-    return this.value
+  public getValue(): string {
+    return this.value;
   }
-  getErrorMessage(): string {
-    return "value is undefined"
+  public getErrorMessage(): string {
+    return "value is undefined";
   }
 }

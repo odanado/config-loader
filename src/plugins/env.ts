@@ -1,21 +1,23 @@
-import { PluginBase } from "../plugin"
+import { PluginBase } from "../plugin";
 
 export class EnvPlugin extends PluginBase {
   private value?: string;
-  constructor(private key: string) {
-    super()
+  private key: string;
+  public constructor(key: string) {
+    super();
+    this.key = key;
   }
 
-  load(): Promise<void> {
-    return new Promise<void>(resolve => {
-      this.value = process.env[this.key]
-      resolve()
-    })
+  public load(): Promise<void> {
+    return new Promise<void>((resolve): void => {
+      this.value = process.env[this.key];
+      resolve();
+    });
   }
-  getValue() {
-    return this.value
+  public getValue(): string | undefined {
+    return this.value;
   }
-  getErrorMessage() {
-    return `${this.key} is not define in environment variable`
+  public getErrorMessage(): string {
+    return `${this.key} is not define in environment variable`;
   }
 }

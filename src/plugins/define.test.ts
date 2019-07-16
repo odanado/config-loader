@@ -1,10 +1,10 @@
-import { DefinePlugin } from "./define"
+import { DefinePlugin } from "./define";
 
-describe("DefinePlugin", () => {
-  describe(".getErrorMessage", () => {
-    it("should be return value", () => {
-      const definePlugin = new DefinePlugin("test")
-      expect(definePlugin.getErrorMessage()).toMatch(/.*/)
-    })
-  })
-})
+describe("DefinePlugin", (): void => {
+  describe(".getErrorMessage", (): void => {
+    it("should be return value", (): void => {
+      const definePlugin = new DefinePlugin("test");
+      expect(definePlugin.getErrorMessage()).toMatch(/.*/);
+    });
+  });
+});
